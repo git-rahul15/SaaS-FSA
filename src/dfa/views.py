@@ -16,4 +16,4 @@ def home_page_view(request, *args, **kwargs):
     path = request.path
     print(time)
     Visits.objects.create(path=path, timestamp = time)
-    return render (request, html_template, {"queryset":queryset} )
+    return render (request, html_template, {"queryset":queryset})
