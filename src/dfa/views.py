@@ -12,8 +12,9 @@ def home_page_view(request, *args, **kwargs):
         "title": "This is Rahul"
     }
     ist = pytz.timezone('Asia/Kolkata')
-    time = datetime.now(ist)
+    time = datetime.now(tz=ist)
     path = request.path
+    view_count = queryset.count()
     print(time)
     Visits.objects.create(path=path, timestamp = time)
-    return render (request, html_template, {"queryset":queryset})
+    return render (request, html_template, {"view_count":view_count})
