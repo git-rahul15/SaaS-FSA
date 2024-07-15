@@ -7,7 +7,7 @@ import pytz
 def home_page_view(request, *args, **kwargs):
     # return HttpResponse ("<h1>Hello World </h1>")
     queryset = Visits.objects.all()
-    html_template  = 'base.html'
+    html_template  = 'home.html'
     context = {
         "title": "This is Rahul"
     }
