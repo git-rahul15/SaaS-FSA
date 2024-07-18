@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+<!-- {% extends 'base.html' %} -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,9 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-    {% block body %}
+    <h1>This is an body</h1>
+    {% block content %}
+    <h3>The View Count is: </h3>
     {{view_count}}
-    {% endblock %}
+    {% endblock content %}
 
 </body>
 </html>
