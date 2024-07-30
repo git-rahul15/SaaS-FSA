@@ -1,18 +1,23 @@
-<!-- {% extends 'base.html' %} -->
-
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SaaS</title>
 </head>
 <body>
-    <h1>This is an body</h1>
     {% block content %}
-    <h3>The View Count is: </h3>
-    {{view_count}}
-    {% endblock content %}
+    <div class="card">
+        <div class="shadow">
+            <h1>View Counts are:</h1>
 
+            <h5>{{view_count}}</h5>
+
+            <h5>{{user.is_authenticated}}</h5>
+        </div>
+    </div>
+
+    {% endblock content %}
 </body>
 </html>

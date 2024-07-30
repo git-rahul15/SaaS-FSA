@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS</title>
+</head>
+<body>
+    {% block content %}
+    <div class="card">
+        <div class="shadow">
+            <h1>Users</h1>
+            {% if owner %}
+                {%if owner %}
+                <div>
+                    {{instance.username}} -- {{instance.last_login}}
+                </div>
+                {% endif %}
+            {% else %}
+            <div>
+                <h3>You Are not allowed to view</h3>
+            </div> 
+                
+            {% endif %}
+            <h3></h3>
+        </div>
+    </div>
+
+    {% endblock content %}
+</body>
+</html>
