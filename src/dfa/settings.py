@@ -47,12 +47,15 @@ ALLOWED_HOSTS = [
     ".railway.app",
     "saas-fsa.onrender.com",
     ".onrender.com"
+    
 ]
 
 if DEBUG:
     ALLOWED_HOSTS = [
         "localhost",
         "127.0.0.1",
+        "saas-fsa.onrender.com",
+        ".onrender.com"
     
     ]
 
