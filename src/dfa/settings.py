@@ -45,6 +45,8 @@ DEBUG = config("DJANGO_DEBUG")
 
 ALLOWED_HOSTS = [
     ".railway.app",
+    "saas-fsa.onrender.com",
+    ".onrender.com"
 ]
 
 if DEBUG:
