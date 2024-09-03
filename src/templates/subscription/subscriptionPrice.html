@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS</title>
+</head>
+<body>
+    {% block content %} 
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+            <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Pricing of Our Featured Products</h2>
+                <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Here are Our Featured Products Pricing in Monthly and Yearly Plan, Feel Free to choose</p>
+            </div>
+
+            <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+                <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" role="tablist">
+                    <li class="me-2" role="presentation">
+                        <button class="inline-block p-4 border-b-2 rounded-t-lg" id="yearly-tab" data-tabs-target="#yearly" type="button" role="tab" aria-controls="yearly" aria-selected="false">Yearly</button>
+                    </li>
+                    <li class="me-2" role="presentation">
+                        <button class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="monthly-tab" data-tabs-target="#monthly" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Monthly</button>
+                    </li>
+                </ul>
+            </div>
+            <div id="default-styled-tab-content">
+                <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="yearly" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="space-y-8 md:space-y-0 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0" style="margin-top: 2rem;" id="plans">
+                        {% for subscription in yearly  %}
+                        <!-- Pricing Card -->
+                        <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                            <h3 class="mb-4 text-2xl font-semibold">{{subscription.subscription.name}}</h3>
+                            <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">{{subscription.subscription.plan_description}}</p>
+                            <div class="flex justify-center items-baseline my-8">
+                                <span class="mr-2 text-5xl font-extrabold">INR {{subscription.price}}</span>
+                                <span class="text-gray-500 dark:text-gray-400">/{{subscription.interval}}</span>
+                            </div>
+                            <!-- List -->
+                            <ul role="list" class="mb-8 space-y-4 text-left">
+                                {% for feature in subscription.display_features_list %}
+                                <li class="flex items-center space-x-3">
+                                    <!-- Icon -->
+                                    <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    <span>{{feature}}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <a href="{{ subscription.get_checkout_url }}" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-blue-900">Get started</a>
+        
+                        </div>
+                        {% endfor %}   
+                    </div>
+                </div>
+                <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="monthly" role="tabpanel" aria-labelledby="dashboard-tab">
+                    <div class="space-y-8 md:space-y-0 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0" style="margin-top: 2rem;" id="plans">
+                        {% for subscription in monthly  %}
+                        <!-- Pricing Card -->
+                        <div class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                            <h3 class="mb-4 text-2xl font-semibold">{{subscription.subscription.name}}</h3>
+                            <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400">{{subscription.subscription.plan_description}}</p>
+                            <div class="flex justify-center items-baseline my-8">
+                                <span class="mr-2 text-5xl font-extrabold">INR {{subscription.price}}</span>
+                                <span class="text-gray-500 dark:text-gray-400">/{{subscription.interval}}</span>
+                            </div>
+                            <!-- List -->
+                            <ul role="list" class="mb-8 space-y-4 text-left">
+                                {% for feature in subscription.display_features_list %}
+                                <li class="flex items-center space-x-3">
+                                    <!-- Icon -->
+                                    <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    <span>{{feature}}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <a href="{{ subscription.get_checkout_url }}" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-blue-900">Get started</a>
+        
+                        </div>
+                        {% endfor %}   
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+      </section>
+
+      <script>
+        const tabsElement = document.getElementById('tabs-example');
+
+// create an array of objects with the id, trigger element (eg. button), and the content element
+const tabElements = [
+    {
+        id: 'yearly',
+        triggerEl: document.querySelector('#yearly'),
+        targetEl: document.querySelector('#profile-example'),
+    },
+    {
+        id: 'monthly',
+        triggerEl: document.querySelector('#monthly'),
+        targetEl: document.querySelector('#dashboard-example'),
+    },
+];
+
+// options with default values
+const options = {
+    defaultTabId: 'settings',
+    activeClasses:
+        'text-blue-600 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400 border-blue-600 dark:border-blue-500',
+    inactiveClasses:
+        'text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300',
+    onShow: () => {
+        console.log('tab is shown');
+    },
+};
+
+// instance options with default values
+const instanceOptions = {
+  id: 'tabs-example',
+  override: true
+};
+      </script>
+    
+
+    {% endblock content %}
+</body>
+</html>

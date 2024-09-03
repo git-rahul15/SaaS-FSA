@@ -8,6 +8,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.conf import settings
 
 
+
 LOGIN_URL  = settings.LOGIN_URL
 
 @login_required(login_url="/accounts/login")

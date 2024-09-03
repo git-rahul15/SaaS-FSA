@@ -63,6 +63,7 @@ if DEBUG:
 # Application definition
 
 INSTALLED_APPS = [
+    'customers',
     'subscription',
     "profiles",
     "downloadhelper",
@@ -82,6 +83,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.github',
     "widget_tweaks",
+    "slippers",
+    'allauth.socialaccount.providers.google',
 ]
 
 
@@ -176,7 +179,18 @@ SOCIALACCOUNT_PROVIDERS = {
 
     "github":{
         "VERIFIED_EMAIL":True
+    },
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
     }
+
 }
 
 
